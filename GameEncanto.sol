@@ -153,9 +153,11 @@ contract GameEncanto is ERC721, Ownable {
         // Keep an easy way to see who owns what NFT.
         nftHolders[msg.sender] = tokenId;
 
-        _safeMint(msg.sender, tokenId);
+        tokenId++;
 
-        emit CharacterNFTMinted(msg.sender, tokenId, _characterIndex);
+        _safeMint(msg.sender, tokenId-1);
+
+        emit CharacterNFTMinted(msg.sender, tokenId-1, _characterIndex);
     }
 
     function attackBoss() public {
